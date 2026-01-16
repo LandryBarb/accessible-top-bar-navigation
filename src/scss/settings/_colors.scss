@@ -196,7 +196,9 @@ $colors-dark-semantic: (
   "state-success":         map.get($colors-green, 500),
   "state-success-soft":    map.get($colors-green, 200),
   "state-info":            map.get($colors-cyan, 500),
-  "state-info-soft":       map.get($colors-cyan, 200)
+  "state-info-soft":       map.get($colors-cyan, 200),
+
+  "live-status-red":       map.get($colors-red, 600)
 );
 
 
