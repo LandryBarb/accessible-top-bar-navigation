@@ -1,0 +1,50 @@
+// src/scss/utilities/_layout.scss
+
+.container{
+  width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+}
+
+// Grid wrapper adds outer padding equal to the layout gap.
+.u-grid-wrap {
+  padding: var(--layout-gap-md, 1.5rem);
+}
+
+// Responsive grid.  Children become equal-width columns.
+// DO NOT use 'order' to rearrange items: keep source order for focus consistency:contentReference[oaicite:3]{index=3}.
+.u-grid {
+  display: grid;
+  // Set the minimum column width via custom property; defaults to 15rem.
+  grid-template-columns: repeat(auto-fit, minmax(var(--grid-min-col-width, 15rem), 1fr));
+  gap: var(--layout-gap-md, 1.5rem);
+
+  // Add top margin between consecutive grids using block-flow scale.
+  & + .u-grid {
+    margin-top: var(--block-flow-md, 4rem);
+  }
+}
+
+// Flexbox alternative for equal-width columns.
+// As recommended, we use margin-left for spacing and flex-wrap on small screens:contentReference[oaicite:4]{index=4}.
+.u-flex-grid {
+  display: flex;
+
+  & > * {
+    flex: 0 1 100%;
+    // left margin to create gap between items
+    &:not(:first-child) {
+      margin-left: var(--layout-gap-md, 1.5rem);
+    }
+  }
+
+  // Allow wrap when viewport is narrower than three columns:contentReference[oaicite:5]{index=5}.
+  @media (max-width: calc(var(--grid-min-col-width, 15rem) * 3)) {
+    flex-wrap: wrap;
+    & > * {
+      margin-left: 0 !important;
+      margin-top: var(--layout-gap-md, 1.5rem);
+    }
+  }
+}

@@ -1,0 +1,51 @@
+// src/scss/blocks/_button.scss
+@use "sass:map";
+@use "../settings" as settings;
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: map.get(settings.$space-scale, xs);
+  padding-inline: map.get(settings.$space-scale, md);
+  padding-block: map.get(settings.$space-scale, xs);
+  border-radius: 999px;
+  border: 1px solid var(--color-border-subtle);
+  background-color: var(--color-surface-soft);
+  color: var(--color-text-main);
+  font-weight: map.get(settings.$font-weight-scale, medium);
+  cursor: pointer;
+  text-decoration: none;
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease,
+    box-shadow 0.15s ease,
+    border-color 0.15s ease;
+
+  &:hover {
+    background-color: var(--color-surface-raised);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--color-focus-ring);
+    outline-offset: 2px;
+  }
+}
+
+.button--primary {
+  border-color: transparent;
+  background-color: var(--color-brand-primary);
+  color: var(--color-text-on-brand);
+
+  &:hover {
+    background-color: var(--color-brand-primary-strong);
+  }
+}
+.button--secondary {
+  background-color: var(--color-surface-soft);
+  color: var(--color-text-main);
+
+  &:hover {
+    background-color: var(--color-surface-raised);
+  }
+} 
