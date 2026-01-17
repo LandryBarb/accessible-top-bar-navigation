@@ -17,6 +17,12 @@
   gap: map.get(settings.$space-scale, md);
 }
 
+.site-header__left{
+  display: flex;
+  align-items: center;
+  gap: map.get(settings.$space-scale, md);
+}
+
 .site-header__brand {
   display: inline-flex;
   align-items: center;
@@ -30,7 +36,7 @@
   }
 }
 
-.site-header__logo {
+.brand__logo {
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -43,43 +49,48 @@
   padding: map.get(settings.$space-scale, sm);
 }
 
-.site-header__title {
+.brand__name {
   font-weight: map.get(settings.$font-weight-scale, semibold);
   font-size: map.get(settings.$font-size-scale, 2);
 }
 
-.site-header__controls {
+.site-header__right {
   display: flex;
   align-items: center;
   gap: map.get(settings.$space-scale, md);
 }
 
-.site-header__live-indicator {
+.indicator-pill {
   background-color: var(--color-surface-soft);
   padding: map.get(settings.$space-scale, sm) map.get(settings.$space-scale, md);
   border-radius: 999px;
   display: flex;
   align-items: center;
-  
   gap: map.get(settings.$space-scale, xs);
 
-  span:first-child {
+  &__label {
     font-size: map.get(settings.$font-size-scale, 0);
     text-transform: uppercase;
     color: var(--color-text-muted);
   }
 
-  span:nth-child(2) {
+  &__title {
     font-size: map.get(settings.$font-size-scale, 0);
     font-weight: map.get(settings.$font-weight-scale, medium);
   }
 
-  span:last-child {
-    width: .375rem;
-    height: .375rem;
+ &__status{
+    display: flex;
+    align-items: center;
+    gap: map.get(settings.$space-scale, xs);
+ }
+
+  .dot{
+    display: inline-block;
+    width: 8px;
+    height: 8px;
     border-radius: 50%;
     background-color: var(--color-live-status-red);
-    display: inline-block;
   }
 }
 
@@ -89,81 +100,70 @@
 .user-profile__toggle {
   display: inline-flex;
   align-items: center;
-  gap: map.get(settings.$space-scale, xs);
+  gap: map.get(settings.$space-scale, sm);
   padding: map.get(settings.$space-scale, xs) map.get(settings.$space-scale, sm);
-}
-
-.user-profile__info {
-  display: flex;
-  flex-direction: row;
-  line-height: 1.2;
-}
-.user-profile__username {
-  font-weight: bold;
-   font-size: map.get(settings.$font-size-scale, 0);
-}
-.user-profile__subscription {
-  color: var(--color-text-subtle);
-}
-
-.user-profile__button {
-  display: inline-flex;
-  align-items: center;
-  gap: map.get(settings.$space-scale, xs);
-  padding: map.get(settings.$space-scale, xs) map.get(settings.$space-scale, sm) 0%;
   border-radius: 999px;
   background-color: var(--color-surface-soft);
   color: var(--color-text-main);
-  font: inherit;
-  cursor: pointer;
-  &:focus-visible {
-    outline: 2px solid var(--color-focus-ring);
-    outline-offset: 2px;
-  }
-
 }
-.user-profile__list {
-  background-color: var(--color-surface-raised);
-  border-radius: 4px;
-  display: flex;
-  flex-direction: column;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-  position: absolute;
-  right: 0;
 
-
+.user-profile__avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%; 
 }
-.user-profile__link {
-  
-  cursor: pointer;
-  font-size: map.get(settings.$font-size-scale, 0);
-  padding: 8px 16px;
-  white-space: nowrap;
-  color: #f2f2f2;
-  text-decoration: none;
 
-  &:hover {
-   
-    background-color: var(--color-surface-raised);
-    color: var(--color-text-main);
-  }
-
-}
 .user-profile__info {
   display: flex;
   flex-direction: column;
-  font-size: 11px;
+  font-size: map.get(settings.$font-size-scale, 0);
   line-height: 1.2;
 }
-.user-profile__link--sign-out {
-  margin-top: 4px;
-  border-top: 1px solid #303030;
-  color: #ff5555;
+.user-profile__username {
+  font-weight: map.get(settings.$font-weight-scale, semibold);
+}
+.user-profile__subsription {
+  font-size: map.get(settings.$font-size-scale, -1);
+  color: var(--color-text-muted);
+}
+.user-profile__arrow {
+  font-size: map.get(settings.$font-size-scale, 0);
 }
 
-.arrow-icon {
-  font-size: 0.6rem;
-  line-height: 1;
+.user-profile__menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  margin-top: map.get(settings.$space-scale, xs);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border-subtle);
+  border-radius: 8px;
+  box-shadow: var(--shadow-md);
+  min-width: 12rem;
+  z-index: 10;
+
+  &-link {
+    display: block;
+    padding: map.get(settings.$space-scale, sm) map.get(settings.$space-scale, md);
+    text-decoration: none;
+    color: var(--color-text-main);
+    font-size: map.get(settings.$font-size-scale, 0);
+
+    &:hover {
+      background-color: var(--color-surface-soft);
+    }
+  }
+  &-link--danger {
+    color: var(--color-state-danger);
+   
+
+    &:hover {
+      background-color: var(--color-surface-raised);
+    }
+  }
+}
+.divider {
+  height: 1px;
+  background-color: var(--color-border-subtle);
+  margin: map.get(settings.$space-scale, xs) 0;
 }

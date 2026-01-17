@@ -21,68 +21,94 @@
   <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Component 1: Top Navigation Bar -->
-  <header class="site-header">
+  <header class="site-header" role="banner">
     <div class="site-header__inner">
-      <nav class="site-nav">
-        <div class="site-header__brand"> 
-          <img src="./assets/game.png" alt="Streamverse Logo" class="site-header__logo">
-          <p class="site-header__title">Streamverse</p>
+      <div class="site-header__left">
+        <a class="site-header__brand" href="/" aria-label="Streamverse home">
+          <img src="./assets/game.png" alt="Streamverse Logo" class="brand__logo">
+          <span class="brand__name">Streamverse</span>
+        </a>
+<!-- Primary Navigation -->
+        <nav class="site-navigation" aria-label="Primary Navigation">
+          <ul class="site-navigation__list">
+            <li>
+              <a href="/live" class="site-navigation__link" aria-current="page">
+                Live
+              </a>
+            </li>
+            <li>
+              <a href="/browse" class="site-navigation__link">Browse</a>
+
+            </li>
+            <li>
+              <a href="/my-list" class="site-navigation__link" aria-disabled="true" tabindex="-1">My List</a>
+            </li>
+          </ul>
+        </nav>
+
+      </div>
+
+      <div class="site-header__right">
+        <!-- Indicator Status -->
+        <div class="indicator-pill" aria-label="Now Playing">
+          <span class="indicator-pill__label">Now</span>
+          <span class="indicator-pill__title">Sci-Fi Marathon</span>
+          <span class="indicator-pill__status" aria-label="Live Now">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="u-visually-hidden">Live Now</span>
+        </span>
         </div>
 
-        <ul class="site-nav__list" >
-          <li class="site-nav__link"
-            onclick="window.fakeLiveClick && window.fakeLiveClick()">
-            Live
-          </li>
-          <li class="site-nav__link">
-            Browse
-          </li>
-          <li class="site-nav__link">
-            My List
-          </li>
-        </ul>
-      </nav>
-
-      <div class="site-header__controls">
-        <div class="site-header__live-indicator"
->
-          <span>Now</span>
-          <span >Sci-Fi Marathon</span>
-          <span class="live-status"></span>
-        </div>
-
-        <div class="user-profile" >
-          <div id="navProfileToggle" class="user-profile__toggle"
-            onclick="(function(){var m=document.getElementById('navProfileMenu'); if(m){ m.style.display = m.style.display === 'block' ? 'none' : 'block'; } })()">
-            <img src="https://via.placeholder.com/26x26" alt="" >
-            <div class="user-profile__info">
-              <span class="user-profile__username" >Alex</span>
-              <span class="user-profile__subscription">Premium</span>
-            </div>
-            <span class="user-profile__button">▼</span>
-          </div>
-
-          <ul id="navProfileMenu" class="user-profile__list"
+        <div class="user-profile">
+          <button
+          type="button"
+          id="profileToggle"
+          class="user-profile__toggle"
+          aria-haspopup="menu"
+          aria-expanded="false"
+          aria-controls="profileMenu"
           >
-            <li class="user-profile__link"
-              onclick="window.location='/'">
+            <img 
+            src="./assets/user.jpg" 
+            alt="User profile picture"
+            class="user-profile__avatar"
+            />
+
+            <span class="user-profile__info">
+              <span class="user-profile__username">Alex</span>
+              <span class="user-profile__subscription">Premium</span>
+            </span>
+            <span class="user-profile__arrow" aria-hidden="true">▼</span>
+            <!-- Must announce interaction for user -->
+            <span class="u-visually-hidden">Open profile Menu</span>
+          </button>
+
+          <ul id="profileMenu" class="user-profile__menu" role="menu" hidden>
+            <a role="menuitem" class="user-profile__menu-link" href="/profile">
               Profile
-            </li>
-            <li class="user-profile__link">
+            </a>
+            <a role="menuitem" class="user-profile__menu-link" href="/account-billing">
               Account &amp; Billing
-            </li>
-            <li class="user-profile__link">
+            </a>
+            <a role="menuitem" class="user-profile__menu-link" href="/playback-settings">
               Playback Settings
-            </li>
-            <li class="user-profile__link user-profile__link--sign-out"
-              onclick="window.location='/'">
+            </a>
+            <div class="divider" role="separator" aria-orientation="horizontal"></div>
+            <button 
+            role="menuitem" 
+            class="user-profile__menu-link user-profile__menu-link--danger" href="/" >
               Sign out of Streamverse
-          </li>
+          </button>
           </ul>
         </div>
       </div>
     </div>
   </header>
+
+  <!-- Example main target -->
+<main id="main" tabindex="-1">
+  <!-- page content -->
+</main>
 
   <!-- Scripts (TypeScript will compile to this JS entry; adjust path as needed) -->
   <script type="module" src="/js/main.js"></script>
